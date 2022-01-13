@@ -1,0 +1,28 @@
+<div class="d-flex flex-row mb-3">
+  <div class="form-group row" style="width: 70%;">
+    <label for="emp.name" class="col-sm-3 col-form-label">Employee Name</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" [(ngModel)]="emp.name" placeholder="Enter Employee Name">
+    </div>
+    <label for="emp.department" class="col-sm-3 col-form-label">Department</label>
+    <div class="col-sm-8">
+      <select class="form-control" [(ngModel)]="emp.department">
+        <option>--Select--</option>
+        <option *ngFor="let depName of departNames">
+          {{depName}}
+        </option>
+      </select>
+    </div>
+    <label for="emp.startDate" class="col-sm-3 col-form-label">Date of Start</label>
+    <div class="col-sm-8">
+      <input type="date" class="form-control" [(ngModel)]="emp.startDate">
+    </div>
+  </div>
+  <div class="ms-3 border-light">
+    <img [src]="safeURL" height="200px" width="200px" /><br>
+    <input type="file" (change)="UploadPhoto($event)" class="ml-2" />
+  </div>
+</div>
+
+<button (click)="AddEmployee()" class="btn btn-primary" *ngIf="employee.empID === 0">Add</button>
+<button (click)="UpdateEmployee()" class="btn btn-primary" *ngIf="employee.empID != 0">Update</button>
